@@ -57,3 +57,13 @@ multiLang.init({
 |:-----   |:-----|-----                           |
 |langname     |str   |必须设置，你要设置的语言名  |
 |callback     |function   |可选的回调函数  |
+
+ **测试**
+ 因为我们的浏览器是中文的，所以正常情况下你加载到的是中文，考虑到测试预览，想加载其他语言，可以在地址后面带入参数。lang=en(你想要的语言)。
+ https://diyao.github.io/multi-lang/?lang=en 。en也可以换为 ru、ko、th等。
+ 也支持setLang('cn')。优先级是 浏览器参数，localStorage.lang的值，浏览器语言
+ 
+  **说明**
+如果你配置的name中，没有（比如当前埃及用户访问），则默认会加载英文的显示。
+  
+  
