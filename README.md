@@ -1,5 +1,5 @@
 # multi-lang
-前端JavaScript多语言加载器，配置各个语言的json或txt语言包，结合vue使用
+前端JavaScript多语言加载器，前端部署好各个语言的json或txt语言包，可结合vue等使用。
 
 
 ``` 
