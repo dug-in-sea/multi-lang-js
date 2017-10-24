@@ -85,8 +85,8 @@ MultiLang.prototype.loadLangContent = function (fileName) {
         that.initArguments.callback(jsondata, that.langname)
     })
 }
-MultiLang.prototype.setLang = function () {
-    window.localStorage.lang = this.langname
+MultiLang.prototype.setLang = function (langName, callback) {
+    window.localStorage.lang = this.langname = langName
     this.init(this.initArguments)
     if (typeof callback === 'function') {
         callback()
