@@ -1,0 +1,6 @@
+﻿{
+        "title": "The Contra ct Status",
+        "name1": "Signed Level",
+        "name2": "Signed Time",
+        "name3": "Duration of Contact"
+}
