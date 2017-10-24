@@ -2,6 +2,46 @@
 前端多语言加载器，配置各个语言的json或txt语言包，初始化时指定哪个语言用哪个语言包。结合vue使用效果更佳
 
 
+``` 
+    <div id="app_lang">
+        <h1>{{ langContent.title }}</h1>
+        <h1>{{ langContent.name1 }}</h1>
+        <h1>{{ langContent.name2 }}</h1>
+        <h1>{{ langContent.name3 }}</h1>
+    </div>
+<script src="js/vue.min.js"></script>
+<script src="js/multi-lang.js"></script>
+<script>
+var vue_app = new Vue({
+        el: '#app_lang',
+        data: {
+                langContent: {
+                    //
+                }
+        }
+})
+var multiLang = new MultiLang()
+multiLang.init({
+    path: 'css/',
+    name: {
+        'en': 'lang_en.txt',
+        'cn': 'lang_cn.txt',
+        'tw': 'lang_cn.txt',
+        'th': 'lang_th.txt',
+        'vn': 'lang_vn.txt',
+        'ru': 'lang_ru.txt',
+        'ko': 'lang_ko.txt'
+    },
+    callback: function (data, langName) {
+        vue_app.langContent = data
+        if (langName === 'en') {
+            //
+        }
+    }
+})
+</script>
+```
+
 **multiLang.init() 初始化参数说明** 
 
 |参数名|类型|说明|
