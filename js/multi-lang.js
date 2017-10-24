@@ -36,10 +36,10 @@ MultiLang.prototype.getLangFromUrl = function (name) {
     return argObj[argName]
 }
 MultiLang.prototype.getAppLang = function () {
-    var navigatorLangStr = this.getLangFromUrl('lang') || window.localStorage.lang || (navigator.language || navigator.userLanguage).toLowerCase(),
-    langArr = this.langZip,
-    len = langArr.length,
-    appLang = 'en'
+    var navigatorLangStr = this.getLangFromUrl('lang') || window.localStorage.multiLang || (navigator.language || navigator.userLanguage).toLowerCase(),
+        langArr = this.langZip,
+        len = langArr.length,
+        appLang = 'en'
     for (var i = 0; i < len; i++) {
         if (langArr[i][1].split(',').indexOf(navigatorLangStr) > -1) {
             appLang = langArr[i][0]
@@ -51,6 +51,24 @@ MultiLang.prototype.getAppLang = function () {
 MultiLang.prototype.init = function (arg) {
     this.initArguments = arg
     this.initLang()
+    this.listenerStorage()
+}
+MultiLang.prototype.listenerStorage = function () {
+    var _this = this
+    window.addEventListener('storage', function (event) {
+        if (event.key === 'multiLang') {
+            _this.setLang()
+        }
+    })
+    Object.defineProperty(window.localStorage, 'lang', {
+        get: function () {
+            return localStorage.multiLang
+        },
+        set: function (value) {
+            localStorage.multiLang = value
+            _this.setLang()
+        }
+    })
 }
 MultiLang.prototype.initLang = function () {
     var allFileName = this.initArguments.name,
@@ -69,12 +87,12 @@ MultiLang.prototype.ajaxGet = function (requestUrl, callback) {
         xmlhttp = new window.ActiveXObject('Microsoft.XMLHTTP')
     }
     xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-			if (typeof callback === 'function') {
-			    callback(xmlhttp.responseText)
-			}
-		}
-	}
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            if (typeof callback === 'function') {
+                callback(xmlhttp.responseText)
+            }
+        }
+    }
     xmlhttp.open('GET', requestUrl, true)
     xmlhttp.send()
 }
@@ -86,7 +104,11 @@ MultiLang.prototype.loadLangContent = function (fileName) {
     })
 }
 MultiLang.prototype.setLang = function (langName, callback) {
-    window.localStorage.lang = this.langname = langName
+    if (arguments.length === 0) {
+        this.langname = window.localStorage.multiLang
+    }else{
+        window.localStorage.multiLang = this.langname = langName
+    }
     this.init(this.initArguments)
     if (typeof callback === 'function') {
         callback()
