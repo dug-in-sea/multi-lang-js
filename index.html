@@ -11,6 +11,26 @@
         <h1>{{ langContent.name1 }}</h1>
         <h1>{{ langContent.name2 }}</h1>
         <h1>{{ langContent.name3 }}</h1>
+        <form>
+            <h3>multiLang.setLang('en')</h3>
+            <select v-model="lang" @change="setLang(lang)">
+                <option value="en">en</option>
+                <option value="cn">cn</option>
+                <option value="th">th</option>
+                <option value="vn">vn</option>
+                <option value="ru">ru</option>
+                <option value="ko">ko</option>
+            </select>
+            <h3>localStorage.lang = 'en'</h3>
+            <select v-model="lang" @change="setLocalStorage(lang)">
+                <option value="en">en</option>
+                <option value="cn">cn</option>
+                <option value="th">th</option>
+                <option value="vn">vn</option>
+                <option value="ru">ru</option>
+                <option value="ko">ko</option>
+            </select>
+        </form>
     </div>
 <script src="js/vue.min.js"></script>
 <script src="js/multi-lang.js"></script>
@@ -20,7 +40,16 @@ var vue_app = new Vue({
         data: {
                 langContent: {
                     //
-                }
+                },
+                lang: 'cn'
+        },
+        methods: {
+            setLang: function (langName) {
+                multiLang.setLang(langName)
+            },
+            setLocalStorage: function (langName) {
+                localStorage.lang = langName
+            }
         }
 })
 var multiLang = new MultiLang()
