@@ -50,10 +50,11 @@ multiLang.init({
 |dataType |str   |值为 txt 或者json。可忽略此参数，默认为json，值为txt时，则返回的是txt文本  |
 |name     |obj   |各个语言对应加载的翻译文本，属性名不可改，对应的文本名字可以改  |
 |callback |fun   |回调的第一个参数是加载到的json(或者文本)数据，第二个数据是当前客户端的语言名字  |
+   
+ **multiLang.setLang(langname,callback) 设置语言**  
+ **如果你觉得multiLang.setLang 使用麻烦，也可以：localStorage.lang=langname，这种写法 **  
+ **注意：设置语言，会让全站语言都立马改动，demo可参考github上的页面。开多个页签试试 **  
   
- **multiLang.setLang(langname,callback) 设置语言** 
- **如果你觉得multiLang.setLang 使用麻烦，也可以：localStorage.lang=langname，这种写法 ** 
- **注意：设置语言，会让全站语言都立马改动，demo可参考github上的页面。开多个页签试试 ** 
  
  |参数名|类型|说明|
 |:-----   |:-----|-----                           |
