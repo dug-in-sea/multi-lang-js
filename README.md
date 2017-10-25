@@ -1,6 +1,8 @@
 # multi-lang
 前端JavaScript多语言加载器，前端部署好各个语言的json或txt语言包，可结合vue等使用。
 
+ npm install multi-lang-js
+ https://www.npmjs.com/package/multi-lang-js 
 
 ``` 
     <div id="app_lang">
@@ -20,7 +22,10 @@ var vue_app = new Vue({
                 }
         }
 })
-var multiLang = new MultiLang()
+var multiLang = new MultiLang() // 1：
+//2：import multiLang from 'multi-lang-js';
+//or
+//3：var multiLang = require('multi-lang-js');
 multiLang.init({
     path: 'css/',
     name: {
