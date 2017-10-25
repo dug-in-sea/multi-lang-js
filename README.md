@@ -50,8 +50,10 @@ multiLang.init({
 |dataType |str   |值为 txt 或者json。可忽略此参数，默认为json，值为txt时，则返回的是txt文本  |
 |name     |obj   |各个语言对应加载的翻译文本，属性名不可改，对应的文本名字可以改  |
 |callback |fun   |回调的第一个参数是加载到的json(或者文本)数据，第二个数据是当前客户端的语言名字  |
- 
- **multiLang.setLang(langname,callback) 设置语言说明** 
+  
+ **multiLang.setLang(langname,callback) 设置语言** 
+ **如果你觉得multiLang.setLang 使用麻烦，也可以：localStorage.lang=langname，这种写法 ** 
+ **注意：设置语言，会让全站语言都立马改动，demo可参考github上的页面。开多个页签试试 ** 
  
  |参数名|类型|说明|
 |:-----   |:-----|-----                           |
@@ -59,9 +61,11 @@ multiLang.init({
 |callback     |function   |可选的回调函数  |
 
  **测试**
- 因为我们的浏览器是中文的，所以正常情况下你加载到的是中文，考虑到测试预览，想加载其他语言，可以在地址后面带入参数。lang=en(你想要的语言)。
- https://diyao.github.io/multi-lang/?lang=en 。en也可以换为 ru、ko、th等。
- 也支持setLang('cn')。优先级是 浏览器参数，localStorage.lang的值，浏览器语言
+ 初始化判断当前是何种语言的逻辑：先查浏览器地址栏lang 参数，其次查 localStorage.lang的值，最后看浏览器语言
+ 
+ 所以为了测试预览，你可以在地址后带入参数，lang=en(你想要的语言 ru、ko、th等)。
+
+ https://diyao.github.io/multi-lang/
  
   **说明**
 如果你配置的name中，没有（比如当前埃及用户访问），则默认会加载英文的显示。
