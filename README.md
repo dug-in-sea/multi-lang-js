@@ -74,6 +74,6 @@ multiLang.init({
  https://diyao.github.io/multi-lang/
  
   **说明**
-如果你配置的name中，没有（比如当前埃及用户访问），则默认会加载英文的显示。
+如果你配置的name中，没有（比如当前埃及用户访问），则默认会加载你配置里的第一个显示。
   
   
