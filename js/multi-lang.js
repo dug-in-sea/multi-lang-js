@@ -16,14 +16,15 @@
         ['in', 'in,hi,hi-in'],
         ['kh', 'kh'],
         ['sg', 'sg'],
-        ['ar', 'ar,ar-sa,ar-eg,ar-dz,ar-tn,ar-ye,ar-jo,ar-kw,ar-bh,ar-iq,ar-ly,ar-ma,ar-om,ar-sy,ar-lb,ar-ae,ar-qa,ar-ss'],
+        ['ar', 'ar,ar-sa,ar-eg,ar-dz,ar-tn,ar-ye,ar-jo,ar-kw,ar-bh,ar-iq,ar-ly,ar-ma,ar-om,ar-sy,ar-lb,ar-ae,ar-qa,ar-ss,ar-il'],
         ['af', 'af,af-za'],
         ['tr', 'tr'],
         ['es', 'es,es-ar,es-bo,es-cl,es-co,es-cr,es-do,es-ec,es-es,es-gt,es-hn,es-mx,es-ni,es-pa,es-pe,es-pr,es-py,es-sv,es-uy,es-ve,es-xl'],
         ['my', 'ms,ms-bn,ms-my,my'],
         ['pt', 'pt,pt-pt,pt-br'],
         ['ja', 'ja,ja-jp,ja-ja,jp,jp-jp'],
-        ['ur', 'ur,ur-pk']
+        ['ur', 'ur,ur-pk'],
+        ['de', 'de,de-at,de-ch,de-de,de-li,de-lu']
     ]
     MultiLang.prototype.getLangFromUrl = function (name) {
         var search = window.location.search,
@@ -63,6 +64,7 @@
             }
         })
         Object.defineProperty(window.localStorage, 'lang', {
+            configurable:true,
             get: function () {
                 return localStorage.multiLang
             },
@@ -77,7 +79,7 @@
             langName = this.getAppLang()
         this.langname = langName
         if (!allFileName[langName]) {
-            langName = 'en'
+            langName = Object.keys(allFileName)[0]
         }
         this.loadLangContent(allFileName[langName])
     }
