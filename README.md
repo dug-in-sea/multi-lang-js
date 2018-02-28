@@ -78,7 +78,7 @@ multiLang.init({
 |callback     |function   |可选的回调函数  |
  
  设置语言demo
- https://diyao.github.io/multi-lang/ 
+ https://diyao.github.io/multi-lang-js/
 
  **测试**
  初始化判断何种语言：先查浏览器地址栏参数有lang 参数，其次查 localStorage.lang的值，最后看浏览器语言
