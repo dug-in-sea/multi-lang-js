@@ -1,8 +1,16 @@
+/**
+ *user: raojianbing
+ *date: 2017-11-21 12:13
+ *description: multi-lang-js.js v1.1.4
+ */
 (function () {
     'use strict'
     function MultiLang () {
-        this.langname = ''
+        this.appLang = ''
+        this.appLangString = ''
+        this.packageLang = ''
         this.initArguments = {}
+        this.getAppLang()
     }
     MultiLang.prototype.langZip = [
         ['cn', 'cn,zh,zh-hans,zh-cn,zh-hans-cn,zh-sg,zh-hans-sg'],
@@ -18,7 +26,7 @@
         ['sg', 'sg'],
         ['ar', 'ar,ar-sa,ar-eg,ar-dz,ar-tn,ar-ye,ar-jo,ar-kw,ar-bh,ar-iq,ar-ly,ar-ma,ar-om,ar-sy,ar-lb,ar-ae,ar-qa,ar-ss,ar-il'],
         ['af', 'af,af-za'],
-        ['tr', 'tr'],
+        ['tr', 'tr,tr-tr'],
         ['es', 'es,es-ar,es-bo,es-cl,es-co,es-cr,es-do,es-ec,es-es,es-gt,es-hn,es-mx,es-ni,es-pa,es-pe,es-pr,es-py,es-sv,es-uy,es-ve,es-xl'],
         ['my', 'ms,ms-bn,ms-my,my'],
         ['pt', 'pt,pt-pt,pt-br'],
@@ -42,13 +50,15 @@
         var navigatorLangStr = this.getLangFromUrl('lang') || window.localStorage.multiLang || (navigator.language || navigator.userLanguage).toLowerCase(),
             langArr = this.langZip,
             len = langArr.length,
-            appLang = 'en'
+            appLang = ''
         for (var i = 0; i < len; i++) {
             if (langArr[i][1].split(',').indexOf(navigatorLangStr) > -1) {
                 appLang = langArr[i][0]
                 break;
             }
         }
+        this.appLangString = navigatorLangStr
+        this.appLang = appLang
         return appLang
     }
     MultiLang.prototype.init = function (arg) {
@@ -76,11 +86,15 @@
     }
     MultiLang.prototype.initLang = function () {
         var allFileName = this.initArguments.name,
-            langName = this.getAppLang()
-        this.langname = langName
+            langName = this.appLang
         if (!allFileName[langName]) {
-            langName = Object.keys(allFileName)[0]
+            if (allFileName.en) {
+                langName = 'en'
+            }else{
+                langName = Object.keys(allFileName)[0]
+            }
         }
+        this.packageLang = langName
         this.loadLangContent(allFileName[langName])
     }
     MultiLang.prototype.ajaxGet = function (requestUrl, callback) {
@@ -104,27 +118,19 @@
         var that = this
         this.ajaxGet(this.initArguments.path + fileName, function (data) {
             var jsondata = that.initArguments.dataType === 'txt' ? data : JSON.parse(data)
-            that.initArguments.callback(jsondata, that.langname)
+            that.initArguments.callback.call(that, jsondata, that.appLang)
         })
     }
     MultiLang.prototype.setLang = function (langName, callback) {
         if (arguments.length === 0) {
-            this.langname = window.localStorage.multiLang
+            this.appLang = window.localStorage.multiLang
         }else{
-            window.localStorage.multiLang = this.langname = langName
+            window.localStorage.multiLang = this.appLang = langName
         }
         this.init(this.initArguments)
         if (typeof callback === 'function') {
             callback()
         }
     }
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = new MultiLang()
-    } else if (typeof define === 'function' && typeof define.amd === 'object') {
-        define('MultiLang', [], function () {
-            return MultiLang
-        })
-    } else {
-        window.MultiLang = MultiLang
-    }
+    window.MultiLang = MultiLang
 }())
