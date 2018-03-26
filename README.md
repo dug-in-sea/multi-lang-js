@@ -1,23 +1,21 @@
-    
-**简要描述：** 
+## 前端多语言（json文件）加载器
 
-- 可用于前端处理多语言问题
-
-
-**依赖：纯js，无依赖：** 
-- ` https://www.bigo.tv/assets/js/multi-lang.js`
+**script引入：** 
+- ` https://xxxx/js/multi-lang.js`
   
-**请求方式：**
-- get
+
     
 
  **npm安装**
 - `npm install multi-lang-js --save`
 
+
+**使用示例**
+
 ``` 
 
 <script src="/assets/js/vue.min.js"></script>
-<script src="/assets/js/multi-lang.js"></script>
+<script src="https://xxxx/js/multi-lang.js"></script>
 <script>
 var vue_app_body = new Vue({
         el: '#bigo_lang_e',
@@ -26,13 +24,13 @@ var vue_app_body = new Vue({
                 }
         }
 });
-
-var multiLang = new MultiLang() // 1：2种引入方式，请查看npm包里的2个文件。
+// 1：
+var multiLang = new MultiLang() 
 //2：import multiLang from 'multi-lang-js';
 
 multiLang.init({
     path: 'css/',
-	dataType:'json',
+    dataType:'json',
     name: {
         'en': 'lang_en.txt',
         'cn': 'lang_cn.txt',
@@ -45,8 +43,8 @@ multiLang.init({
     },
     callback: function(data, langName){
         vue_app_body.langContent = data;
-		// 第二个参数推荐不再使用，为了兼容而存在。返回的是浏览器语言名。如 cn
-		// 如需获取语言相关。请用 this.appLang 等。请看其3个语言相关属性。
+        // 第二个参数推荐不再使用，为了兼容而存在。返回的是浏览器语言名。如 cn
+        // 如需获取语言相关。请用 this.appLang 等。请看其3个语言相关属性。
     }
 });
 </script>
@@ -76,11 +74,9 @@ multiLang.init({
 |:-----   |:-----|-----                           |
 |langname     |str   |必须设置，你要设置的语言名  |
 |callback     |function   |可选的回调函数  |
- 
- 设置语言demo
- https://diyao.github.io/multi-lang-js/
 
- **测试**
+
+ **测试支持**
  初始化判断何种语言：先查浏览器地址栏参数有lang 参数，其次查 localStorage.lang的值，最后看浏览器语言
  
  所以为了测试预览，你可以在地址后带入参数，lang=en(你想要的语言)。
@@ -88,4 +84,6 @@ multiLang.init({
   **说明**
 如果你配置的name中，没有（比如当前埃及用户访问），则尝试使用en（英文），如果英文也没有配置，则使用配置的“第一个”语言包。
   
+
+
 

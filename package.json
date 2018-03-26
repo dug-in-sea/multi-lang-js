@@ -1,0 +1,28 @@
+{
+  "name": "multi-lang-js",
+  "version": "1.1.7",
+  "description": "javascript multilingual loader, combined with vue and other frameworks, configuring the txt file language package.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diyao/multi-lang-js.git"
+  },
+  "keywords": [
+    "multi-lang-js",
+    "javascript",
+    "multilingual",
+    "loader",
+    "language",
+    "package",
+    "vue"
+  ],
+  "author": "diyao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diyao/multi-lang-js/issues"
+  },
+  "homepage": "https://github.com/diyao/multi-lang-js#readme"
+}
