@@ -49,7 +49,7 @@ multiLang.init({
 });
 </script>
 ```
- **对象multiLang，有3个语言相关属性** 
+**对象multiLang，有3个语言相关属性** 
 
 |属性名|类型|说明|
 |:-----   |:-----|-----                           |
@@ -57,7 +57,7 @@ multiLang.init({
 |appLangString |str   |对象初始化即可获得，如：zh-cn |
 |packageLang     |str   |init()之后获得，表示加载的语言包。如 vn  |
 
- **multiLang.init() 初始化参数说明** 
+**multiLang.init() 初始化参数说明** 
 
 |参数名|类型|说明|
 |:-----   |:-----|-----                           |
@@ -66,9 +66,10 @@ multiLang.init({
 |name     |obj   |各个语言对应加载的翻译文本，属性名不可改，对应的文本名字可以改  |
 |callback |fun   |回调的第一个参数是加载到的json(或者文本)数据，该函数中this指向new出的对象  |
  
- **multiLang.setLang(langname,callback) 设置语言** 
- **如果你觉得multiLang.setLang 使用麻烦，也可以：localStorage.lang=langname，这种写法 ** 
- **注意：设置语言，会让全站语言都立马改动，demo可参考github上的页面。开多个页签试试 ** 
+**multiLang.setLang(langname,callback) 设置语言** 
+
+如果你觉得multiLang.setLang 使用麻烦，也可以：localStorage.lang=langname，这种写法
+注意：设置语言，会让全站语言都立马改动，demo可参考github上的页面。开多个页签试试
  
  |参数名|类型|说明|
 |:-----   |:-----|-----                           |
@@ -76,12 +77,12 @@ multiLang.init({
 |callback     |function   |可选的回调函数  |
 
 
- **测试支持**
- 初始化判断何种语言：先查浏览器地址栏参数有lang 参数，其次查 localStorage.lang的值，最后看浏览器语言
+**测试支持**
+初始化判断何种语言：先查浏览器地址栏参数有lang 参数，其次查 localStorage.lang的值，最后看浏览器语言
  
- 所以为了测试预览，你可以在地址后带入参数，lang=en(你想要的语言)。
+所以为了测试预览，你可以在地址后带入参数，lang=en(你想要的语言)。
  
-  **说明**
+**说明**
 如果你配置的name中，没有（比如当前埃及用户访问），则尝试使用en（英文），如果英文也没有配置，则使用配置的“第一个”语言包。
   
 
