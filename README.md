@@ -12,7 +12,7 @@
 
 **使用示例**
 
-``` 
+```javascript
 
 <script src="/assets/js/vue.min.js"></script>
 <script src="https://xxxx/js/multi-lang.js"></script>
@@ -48,6 +48,7 @@ multiLang.init({
     }
 });
 </script>
+
 ```
 **对象multiLang，有3个语言相关属性** 
 
@@ -78,11 +79,12 @@ multiLang.init({
 
 
 **测试支持**
+
 初始化判断何种语言：先查浏览器地址栏参数有lang 参数，其次查 localStorage.lang的值，最后看浏览器语言
- 
 所以为了测试预览，你可以在地址后带入参数，lang=en(你想要的语言)。
  
 **说明**
+
 如果你配置的name中，没有（比如当前埃及用户访问），则尝试使用en（英文），如果英文也没有配置，则使用配置的“第一个”语言包。
   
 
